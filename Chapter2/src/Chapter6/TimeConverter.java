@@ -2,7 +2,7 @@
 
 Program: TimeConverter.java          Last Date of this Revision: March 8, 2022
 
-Purpose: Generate a number, then have the user guess the number until they win!
+Purpose: Convert a unit of time as per user request.
 
 Author: Nathaniel Edillon
 School: CHHS
@@ -44,14 +44,22 @@ public class TimeConverter
 		int userConvert;
 		double userValue;
 		
+		// list conversions and prompt user for a conversion to make
 		System.out.println("Conversions: 	\n"
 				+ "1. Hours to Minutes		\n"
 				+ "2. Hours to Days			\n"
 				+ "3. Minutes to Hours		\n"
 				+ "4. Days to Hours");
-		System.out.print("Choose a corresponding value for the desired conversion: ");
-		userConvert = userInput.nextInt();
 		
+		// repeats until user is in range
+		do
+		{
+			System.out.print("Choose a corresponding value for the desired conversion: ");
+			userConvert = userInput.nextInt();
+		}
+		while (userConvert < 1 || userConvert > 4);	
+		
+		// message to confirm which conversion is being done
 		switch (userConvert)
 		{
 			case 1:
@@ -68,11 +76,42 @@ public class TimeConverter
 				break;
 		}
 		
-		
-		
+		// prompt the user to input a time to convert
 		System.out.print("Enter the value to be converted: ");
 		userValue = userInput.nextDouble();
 		
-		System.out.print(hoursToMinutes(userValue));
+		// print the result
+		switch (userConvert)
+		{
+			case 1:
+				System.out.printf("%.1f hours converts to %.2f minutes.", userValue, hoursToMinutes(userValue));
+				break;
+			case 2:
+				System.out.printf("%.1f hours converts to %.2f days.", userValue, hoursToDays(userValue));
+				break;
+			case 3:
+				System.out.printf("%.1f minutes converts to %.2f hours.", userValue, minutesToHours(userValue));
+				break;
+			case 4:
+				System.out.printf("%.1f days converts to %.2f hours.", userValue, daysToHours(userValue));
+				break;
+		}
 	}
 }
+
+/*
+
+Conversions: 
+1. Hours to Minutes
+2. Hours to Days
+3. Minutes to Hours
+4. Days to Hours
+Choose a corresponding value for the desired conversion: 0
+Choose a corresponding value for the desired conversion: 7
+Choose a corresponding value for the desired conversion: 5
+Choose a corresponding value for the desired conversion: 1
+We are converting from hours into minutes.
+Enter the value to be converted: 88
+88.0 hours converts to 5280.00 minutes.
+
+*/
