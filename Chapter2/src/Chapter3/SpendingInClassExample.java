@@ -1,3 +1,16 @@
+/*
+
+Program: SpendingInClassExample.java          Last Date of this Revision: February 23, 2022 (header and screen dump March 9, 2022)
+
+Purpose: Prompt for the money spent on certain categories, then calculate and print percentage spent on each category.
+
+Author: Nathaniel Edillon
+School: CHHS
+Course: Computer Science 20
+ 
+
+*/
+
 package Chapter3;
 
 import java.text.NumberFormat;
@@ -44,5 +57,25 @@ public class SpendingInClassExample
 		System.out.println("Entertainment\t" + nf.format(entertainmentPercent));
 		System.out.println("Rent\t\t" + nf.format(rentPercent));
 	}
-
 }
+
+/*
+
+Enter the amount spent last month on the following items:
+
+Food: $101
+
+Clothing: $288
+
+Entertainment: $89
+
+Rent: $1299
+
+Category: 		Budget:
+Food			6%
+Clothing		16%
+Entertainment	5%
+Rent			73%
+
+
+*/
