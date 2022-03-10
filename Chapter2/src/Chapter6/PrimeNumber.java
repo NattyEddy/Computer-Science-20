@@ -1,3 +1,16 @@
+/*
+
+Program: PrimeNumber.java          Last Date of this Revision: March 9, 2022
+
+Purpose: Prompt for a number, and check if it's a prime number.
+
+Author: Nathaniel Edillon
+School: CHHS
+Course: Computer Programming 20
+ 
+
+*/
+
 package Chapter6;
 
 import java.util.Scanner;
@@ -6,31 +19,53 @@ public class PrimeNumber
 {
 	static Scanner userInput = new Scanner(System.in);
 	
-	public static void primeCheck(int numberToTest)
+	public static boolean primeCheck(int numberToTest)
 	{
-		boolean isPrime;
-		for (int i = numberToTest; i == 1; i--)
+		// the following line intializes the boolean that will be outputted
+		boolean isPrime = true;
+		
+		// this checks the number to determine if it's not prime
+		for (int i = numberToTest - 1; i >= 2; i--)
 		{
-			
-			System.out.println(i);
-			// if (numberToTest * i)
-			// {
-			// 	isPrime = true;
-			// }
+			if (numberToTest % i == 0)
+			{
+				isPrime = false;
+				break;
+			}
 		}
 		
+		return isPrime;
 	}
 	
 	public static void main(String[] args)
 	{
-		System.out.println("Enter a number to check if it's prime: ");
-		int checkPrime = userInput.nextInt();
+		int enteredValue;
 		
-		primeCheck(checkPrime);
-		// System.out.println(checkPrime % (checkPrime - 1));
-		for (int i = checkPrime; i == 1; i--)
+		// ask for a valid number to check
+		do
 		{
-			System.out.println(i);
+			System.out.print("Enter a natural number to check if it's prime: ");
+			enteredValue = userInput.nextInt();
+		}
+		while (enteredValue < 1);
+		
+		// once determined, print the result
+		if (primeCheck(enteredValue) == true)
+		{
+			System.out.printf("The number %d is prime!", enteredValue);
+		}
+		else
+		{
+			System.out.printf("The number %d is not prime.", enteredValue);
 		}
 	}
 }
+
+/* 
+
+Enter a natural number to check if it's prime: 0
+Enter a natural number to check if it's prime: -3
+Enter a natural number to check if it's prime: 7
+The number 7 is prime!
+
+*/
