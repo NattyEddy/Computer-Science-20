@@ -1,6 +1,6 @@
 /*
 
-Program: PrimeNumberModified.java          Last Date of this Revision: March 9, 2022
+Program: PrimeNumberModified.java          Last Date of this Revision: March 15, 2022
 
 Purpose: Prompt for two numbers, find prime numbers in that range, and print them.
 
@@ -39,7 +39,7 @@ public class PrimeNumberModified
 			System.out.print("Enter the greater natural number of the range: ");
 			range[1] = userInput.nextInt();
 		}
-		while (range[1] < 1);
+		while (range[1] < range[0]);
 
 		// introduces the values between the user's range
 		System.out.printf("The following is the list of prime numbers between %d and %d: \n", range[0], range[1]);
