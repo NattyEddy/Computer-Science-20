@@ -1,5 +1,6 @@
 package Chapter6;
 
+import java.awt.BorderLayout;
 import java.awt.Font;
 
 import javax.swing.*;
@@ -8,23 +9,30 @@ public class FirstGUIApplication
 {
 	public FirstGUIApplication()
 	{
-		JFrame window = new JFrame("Hello World!");
+		JFrame window = new JFrame("Prime Finder");
 		window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		JPanel panel = new JPanel();
-		BoxLayout ux = new BoxLayout(panel, BoxLayout.X_AXIS);
-		panel.setLayout(ux);
+		panel.setLayout(new BorderLayout());
 		
-		JTextArea edit = new JTextArea("Edit this text...");
-		edit.setFont(new Font("Comic Sans MS", Font.BOLD, 36));
+		// title element
+		JLabel title = new JLabel("Prime Finder");
+		title.setFont(new Font("Comic Sans MS", Font.BOLD, 72));
+		title.setHorizontalAlignment(JLabel.CENTER);
 		
-		JLabel words = new JLabel("Hello World!");
-		words.setFont(new Font("Comic Sans MS", Font.BOLD, 72));
-		words.setHorizontalAlignment(JLabel.CENTER);
+		// prime finder type select
+		JButton button1 = new JButton("Click to not be bored...");
+		button1.setFont(new Font("Comic Sans MS", Font.BOLD, 36));
 		
+		// the actual prime finder/checker
+		JButton button2 = new JButton("Main things happen here");
+		button2.setFont(new Font("Comic Sans MS", Font.BOLD, 36));
+		
+		// add all elements into program layout
 		window.add(panel);
-		panel.add(words);
-		panel.add(edit);
+		panel.add(title, BorderLayout.NORTH);
+		panel.add(button1, BorderLayout.EAST);
+		panel.add(button2, BorderLayout.CENTER);
 		
 		window.setSize(1280, 720);
 		window.setVisible(true);
