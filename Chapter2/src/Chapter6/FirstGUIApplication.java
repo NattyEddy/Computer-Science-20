@@ -7,6 +7,18 @@ import javax.swing.*;
 
 public class FirstGUIApplication
 {
+	public void selectPanel()
+	{
+		// the panel for single prime numbers
+		JPanel chooseFunc = new JPanel();
+		chooseFunc.setLayout(new BoxLayout(chooseFunc, BoxLayout.X_AXIS));
+		
+		JCheckBox single = new JCheckBox();
+		JCheckBox range = new JCheckBox();
+		
+		
+	}
+	
 	public FirstGUIApplication()
 	{
 		JFrame window = new JFrame("Prime Finder");
