@@ -1,6 +1,6 @@
 /*
 
-Program: PrimeNumber.java          Last Date of this Revision: March 9, 2022
+Program: PrimeNumber.java          Last Date of this Revision: March 29, 2022
 
 Purpose: Prompt for a number, and check if it's a prime number.
 
@@ -25,7 +25,7 @@ public class PrimeNumber
 		boolean isPrime = true;
 		
 		// this checks the number to determine if it's not prime
-		for (int i = numberToTest - 1; i >= 2; i--)
+		for (int i = 2; i <= numberToTest - 1; i++)
 		{
 			if (numberToTest % i == 0)
 			{

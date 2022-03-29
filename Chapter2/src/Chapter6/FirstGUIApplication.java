@@ -9,7 +9,7 @@ import javax.swing.*;
 
 public class FirstGUIApplication
 {	
-	public FirstGUIApplication()
+	public static void primeNumberWindow()
 	{
 		JFrame window = new JFrame("Prime Finder");
 		window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -69,6 +69,6 @@ public class FirstGUIApplication
 	
 	public static void main(String[] args)
 	{
-		new FirstGUIApplication();
+		primeNumberWindow();
 	}
 }
