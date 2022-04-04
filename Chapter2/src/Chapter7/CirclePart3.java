@@ -2,7 +2,7 @@
 
 Program: CirclePart3.java          Last Date of this Revision: April 4, 2022
 
-Purpose: Print the circumference of a circle via the Circle class, with the displayAreaFormula() method.
+Purpose: Print the circumference of a circle via the Circle class, and use the displayAreaFormula() method.
 
 Author: Nathaniel Edillon
 School: CHHS
