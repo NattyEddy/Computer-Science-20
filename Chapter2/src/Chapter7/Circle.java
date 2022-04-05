@@ -1,3 +1,16 @@
+/*
+
+Program: Circle.java          Last Date of this Revision: April 4, 2022
+
+Purpose: Provide the methods used to determine a circle's dimensions.
+
+Author: Nathaniel Edillon
+School: CHHS
+Course: Computer Programming 20
+ 
+
+*/
+
 package Chapter7;
 
 public class Circle
