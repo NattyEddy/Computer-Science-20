@@ -1,6 +1,6 @@
 /*
 
-Program: PiggyBank.java          Last Date of this Revision: April 5, 2022
+Program: PiggyBank.java          Last Date of this Revision: April 6, 2022
 
 Purpose: Form the application for a savings account, emulating a piggy bank.
 
@@ -31,32 +31,32 @@ public class PiggyBank {
 	
 	
 	// the following methods add value to the balance based on coin quantities
-	public void addTwooniesCents(int coins)
+	public void addTwoonies(int coins)
 	{
 		balance += coins * 2.00;
 	}
 	
-	public void addLooniesCents(int coins)
+	public void addLoonies(int coins)
 	{
 		balance += coins * 1.00;
 	}
 	
-	public void addQuartersCents(int coins)
+	public void addQuarters(int coins)
 	{
 		balance += coins * 0.25;
 	}
 	
-	public void addDimesCents(int coins)
+	public void addDimes(int coins)
 	{
 		balance += coins * 0.10;
 	}
 	
-	public void addNickelsCents(int coins)
+	public void addNickels(int coins)
 	{
 		balance += coins * 0.05;
 	}
 	
-	public void addPenniesCents(int coins)
+	public void addPennies(int coins)
 	{
 		balance += coins * 0.01;
 	}
@@ -82,12 +82,12 @@ public class PiggyBank {
 	{
 		PiggyBank piggyBank = new PiggyBank();
 		
-		piggyBank.addQuartersCents(5);
-		piggyBank.addDimesCents(10);
-		piggyBank.addNickelsCents(3);
-		piggyBank.addPenniesCents(9);
-		piggyBank.addLooniesCents(4);
-		piggyBank.addTwooniesCents(7);
+		piggyBank.addQuarters(5);
+		piggyBank.addDimes(10);
+		piggyBank.addNickels(3);
+		piggyBank.addPennies(9);
+		piggyBank.addLoonies(4);
+		piggyBank.addTwoonies(7);
 		
 		System.out.print(piggyBank.toString());
 	}
