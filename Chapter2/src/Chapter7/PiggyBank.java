@@ -71,7 +71,7 @@ public class PiggyBank {
 	// prints out the balance in a string
 	public String toString()
 	{
-		return String.format("The current balance is $%.2f", balance);
+		return String.format("Total: $%.2f", balance);
 	}
 	
 	
