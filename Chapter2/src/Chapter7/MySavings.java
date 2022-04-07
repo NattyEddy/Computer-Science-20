@@ -1,6 +1,6 @@
 /*
 
-Program: MySavings.java          Last Date of this Revision: April 6, 2022
+Program: MySavings.java          Last Date of this Revision: April 7, 2022
 
 Purpose: The GUI application that uses the PiggyBank class.
 
@@ -63,6 +63,7 @@ public class MySavings implements ActionListener
     	instruction.setText("Enter the number of respective coins in your piggybank:");
 		instruction.setWrapStyleWord(true);
     	instruction.setLineWrap(true);
+    	instruction.setOpaque(false);
     	instruction.setEditable(false);
     	instruction.setFocusable(false);
 
@@ -101,29 +102,42 @@ public class MySavings implements ActionListener
 	}
 	
 	// when you press clear or submit the coins
-	public void actionPerformed(ActionEvent e)
+	public void actionPerformed(ActionEvent evt)
 	{
-		if (e.getSource() == clear)
+		if (evt.getSource() == clear)
 		{
+			// clears the text fields and resets the balance
 			twooniesField.setText("");
 			looniesField.setText("");
 			quartersField.setText("");
 			dimesField.setText("");
 			nickelsField.setText("");
 			penniesField.setText("");
+			
+			myAccount.withdraw();
 		}
-		else if (e.getSource() == showBalance)
+		else if (evt.getSource() == showBalance && myAccount.getBalance() == 0)
+		//  *** NOTE: this condition prevents adding the balance, but requires clearing 
+		//	*** the text fields (via clear button) before submitting more coins
 		{
-			myAccount.addTwoonies(Integer.parseInt(twooniesField.getText()));
-			myAccount.addLoonies(Integer.parseInt(looniesField.getText()));
-			myAccount.addQuarters(Integer.parseInt(quartersField.getText()));
-			myAccount.addDimes(Integer.parseInt(dimesField.getText()));
-			myAccount.addNickels(Integer.parseInt(nickelsField.getText()));
-			myAccount.addPennies(Integer.parseInt(penniesField.getText()));
+			// grab the integer or insert 0 for each text field, and add the coins corresponding
+			try {myAccount.addTwoonies(Integer.parseInt(twooniesField.getText()));}
+			catch (Exception e) {myAccount.addTwoonies(0);}
+			try {myAccount.addLoonies(Integer.parseInt(looniesField.getText()));}
+			catch (Exception e) {myAccount.addLoonies(0);}
+			try {myAccount.addQuarters(Integer.parseInt(quartersField.getText()));}
+			catch (Exception e) {myAccount.addQuarters(0);}
+			try {myAccount.addDimes(Integer.parseInt(dimesField.getText()));}
+			catch (Exception e) {myAccount.addDimes(0);}
+			try {myAccount.addNickels(Integer.parseInt(nickelsField.getText()));}
+			catch (Exception e) {myAccount.addNickels(0);}
+			try {myAccount.addPennies(Integer.parseInt(penniesField.getText()));}
+			catch (Exception e) {myAccount.addPennies(0);}
 		}
 		total.setText(myAccount.toString());
 	}
 
+	// start the program
 	public void launch()
 	{
 		window.add(panel);

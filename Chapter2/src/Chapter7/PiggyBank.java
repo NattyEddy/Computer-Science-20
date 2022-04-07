@@ -1,6 +1,6 @@
 /*
 
-Program: PiggyBank.java          Last Date of this Revision: April 6, 2022
+Program: PiggyBank.java          Last Date of this Revision: April 7, 2022
 
 Purpose: Form the application for a savings account, emulating a piggy bank.
 
@@ -34,44 +34,57 @@ public class PiggyBank {
 	public void addTwoonies(int coins)
 	{
 		balance += coins * 2.00;
+		System.out.printf("Added $%.2f\n", coins * 2.00);
 	}
 	
 	public void addLoonies(int coins)
 	{
 		balance += coins * 1.00;
+		System.out.printf("Added $%.2f\n", coins * 1.00);
 	}
 	
 	public void addQuarters(int coins)
 	{
 		balance += coins * 0.25;
+		System.out.printf("Added $%.2f\n", coins * 0.25);
 	}
 	
 	public void addDimes(int coins)
 	{
 		balance += coins * 0.10;
+		System.out.printf("Added $%.2f\n", coins * 0.10);
 	}
 	
 	public void addNickels(int coins)
 	{
 		balance += coins * 0.05;
+		System.out.printf("Added $%.2f\n", coins * 0.05);
 	}
 	
 	public void addPennies(int coins)
 	{
 		balance += coins * 0.01;
+		System.out.printf("Added $%.2f\n", coins * 0.01);
 	}
 	
 	// clears the balance
 	public void withdraw()
 	{
 		balance = 0;
+		System.out.println("Balance reset");
 	}
 	
+	
+	// prints out the raw balance
+	public double getBalance()
+	{
+		return balance;
+	}
 	
 	// prints out the balance in a string
 	public String toString()
 	{
-		return String.format("Total: $%.2f", balance);
+		return String.format("Balance: $%.2f", balance);
 	}
 	
 	
