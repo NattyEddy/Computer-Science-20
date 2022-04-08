@@ -58,7 +58,7 @@ public class AdderBase
     
     public String getQuestion()
     {
-        return String.format("%d + %d", x, y);
+        return String.format("%d + %d =", x, y);
     }
 
     public boolean userSumCheck()
