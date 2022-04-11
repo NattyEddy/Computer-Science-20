@@ -13,18 +13,16 @@ Course: Computer Programming 20
 
 package Chapter7;
 
-import java.awt.BorderLayout;
-import java.awt.FlowLayout;
-import java.awt.GridLayout;
-
+import java.awt.*;
+import java.awt.event.*;
 import javax.swing.*;
 
-public class Adder
+public class Adder implements ActionListener
 {
 
 	private static final JFrame window = new JFrame("Adder Game");
 	private static final JPanel generalPanel = new JPanel(new BorderLayout());
-	private static final JPanel mainPanel = new JPanel(new GridLayout(2, 2));
+	private static final JPanel mainPanel = new JPanel(new GridLayout(2, 2, 10, 10));
 	private static final JPanel headerPanel = new JPanel(new FlowLayout());
 	private JLabel header, equation, points;
 	private JButton submit, end;
@@ -42,7 +40,8 @@ public class Adder
 		submit = new JButton("Submit");
 		end = new JButton("End");
 		
-		answerField = new JTextField();
+		answerField = new JTextField(8);
+		answerField.setSize(50, 10);
 		
 		
 		generalPanel.add(headerPanel, BorderLayout.NORTH);
@@ -58,6 +57,20 @@ public class Adder
 		
 	}
 	
+	public void actionPerformed(ActionEvent evt)
+	{
+		if (evt.getSource() == submit)
+		{
+			// clears the text fields and resets the balance
+		}
+		else if (evt.getSource() == end)
+		
+		{
+			// grab the integer or insert 0 for each text field, and add the coins corresponding
+			
+		}
+	}
+
 	public void launch()
 	{
 		window.add(generalPanel);
