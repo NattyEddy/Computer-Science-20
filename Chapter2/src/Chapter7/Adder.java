@@ -1,6 +1,6 @@
 /*
 
-Program: Adder.java          Last Date of this Revision: April 8, 2022
+Program: Adder.java          Last Date of this Revision: April 12, 2022
 
 Purpose: A game where you earn points for answering the right sum for each equation.
 
@@ -19,34 +19,39 @@ import javax.swing.*;
 
 public class Adder implements ActionListener
 {
-
+	AdderBase calculator = new AdderBase();
+	
 	private static final JFrame window = new JFrame("Adder Game");
 	private static final JPanel generalPanel = new JPanel(new BorderLayout());
 	private static final JPanel mainPanel = new JPanel(new GridLayout(2, 2, 10, 10));
 	private static final JPanel headerPanel = new JPanel(new FlowLayout());
-	private JLabel header, equation, points;
+	private JLabel header, equation, pointsDisplay;
 	private JButton submit, end;
 	private JTextField answerField;
+	private int tries;
 	
 	public Adder()
 	{
-		AdderBase calculator = new AdderBase();
 		
+		calculator.generateQuestion(1, 20);
 		
+		// component setup
 		header = new JLabel("Enter the correct sum");
 		equation = new JLabel(calculator.getQuestion());
-		points = new JLabel("...");
+		pointsDisplay = new JLabel("...");
 		
 		submit = new JButton("Submit");
+		submit.addActionListener(this);
 		end = new JButton("End");
+		end.addActionListener(this);
 		
 		answerField = new JTextField(8);
-		answerField.setSize(50, 10);
 		
 		
+		// layout setup
 		generalPanel.add(headerPanel, BorderLayout.NORTH);
 		generalPanel.add(mainPanel, BorderLayout.CENTER);
-		generalPanel.add(points, BorderLayout.SOUTH);
+		generalPanel.add(pointsDisplay, BorderLayout.SOUTH);
 
 		headerPanel.add(header);
 		
@@ -59,15 +64,28 @@ public class Adder implements ActionListener
 	
 	public void actionPerformed(ActionEvent evt)
 	{
-		if (evt.getSource() == submit)
+		if (evt.getSource() == end)
 		{
-			// clears the text fields and resets the balance
-		}
-		else if (evt.getSource() == end)
-		
-		{
-			// grab the integer or insert 0 for each text field, and add the coins corresponding
+			// clears the text fields and prints out the final results
+			answerField.setText("");
+			pointsDisplay.setText(String.format("%d", calculator.getPoints()));
 			
+			System.out.println("'End' pressed.");
+		}
+		else if (evt.getSource() == submit)
+		{
+			// grab the integer or insert 0 for each text field, and compare to the actual sum
+			calculator.saveUserSum(Integer.parseInt(answerField.getText()));
+			if (calculator.userSumCheck() == true)
+                {
+                    calculator.addPoints(tries);
+                }
+                else
+                {
+                    tries++;
+                }
+			
+			System.out.println("'Submit' pressed.");
 		}
 	}
 
