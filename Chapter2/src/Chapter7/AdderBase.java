@@ -1,6 +1,6 @@
 /*
 
-Program: AdderBase.java          Last Date of this Revision: April 7, 2022
+Program: AdderBase.java          Last Date of this Revision: April 13, 2022
 
 Purpose: Provide the methods used for the adder game.
 
@@ -17,14 +17,16 @@ import java.util.Scanner;
 
 public class AdderBase
 {
-    private int userSum, sum, x, y, pointsTotal;
-    
+    private int userSum, sum, x, y, pointsAdded, pointsTotal;
+    static Scanner testInput = new Scanner(System.in);
+
     public AdderBase()
     {
         userSum = 0;
         sum = 0;
         x = 0;
         y = 0;
+        
         pointsTotal = 0;
     }
 
@@ -54,16 +56,27 @@ public class AdderBase
 
     public void addPoints(int tries)
 	{
-		int p = 5;
         switch (tries)
 		{
-			case 1, 2:
-				p -= 2;
+			case 0:
+                pointsAdded = 5;
+                break;
+            case 1:
+				pointsAdded = 3;
+                break;
+            default:
+                pointsAdded = 0;
                 break;
 		}
-        pointsTotal += p;
-        System.out.println("Points added: +" + p);
+        pointsTotal += pointsAdded;
+        System.out.println("Points added: +" + pointsAdded);
 	}
+
+    // *** updates after addPoints()
+    public int getPointsAccumulated()
+    {
+        return pointsAdded;
+    }
 
     public int getSum()
     {
@@ -90,7 +103,7 @@ public class AdderBase
     public static void main(String[] args)
     {
         AdderBase calculator = new AdderBase();
-        Scanner testInput = new Scanner(System.in);
+        
         
         int i = 0, j = 0, x = 0;
         while (i < 5 && j >= 0)
