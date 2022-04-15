@@ -23,9 +23,10 @@ public class Adder implements ActionListener
 	
 	private static final JFrame window = new JFrame("Adder Game");
 	private static final JPanel generalPanel = new JPanel(new BorderLayout());
-	private static final JPanel mainPanel = new JPanel(new GridLayout(2, 2, 10, 10));
+	private static final JPanel mainPanel = new JPanel();
 	private static final JPanel headerPanel = new JPanel(new FlowLayout());
 	private static final JPanel bottomPanel = new JPanel(new FlowLayout());
+	private static final GroupLayout main = new GroupLayout(mainPanel);
 	private JLabel header, equation, pointsDisplay, roundsDisplay;
 	private JButton submit, end;
 	private JTextField answerField;
@@ -58,10 +59,34 @@ public class Adder implements ActionListener
 		
 		headerPanel.add(header);
 		
-		mainPanel.add(equation);
-		mainPanel.add(answerField);
-		mainPanel.add(end);
-		mainPanel.add(submit);
+		main.setAutoCreateGaps(true);
+		main.setAutoCreateContainerGaps(true);
+		main.setHorizontalGroup 
+		(
+			main.createSequentialGroup()
+				.addGroup(main.createParallelGroup(GroupLayout.Alignment.LEADING))
+					.addComponent(equation)
+					.addComponent(end)
+				.addGroup(main.createParallelGroup(GroupLayout.Alignment.LEADING))
+					.addComponent(answerField)
+					.addComponent(submit)
+		);
+		main.setVerticalGroup
+		(
+			main.createSequentialGroup()
+				.addGroup(main.createParallelGroup(GroupLayout.Alignment.BASELINE))
+					.addComponent(equation)
+					.addComponent(answerField)
+				.addGroup(main.createParallelGroup(GroupLayout.Alignment.BASELINE))
+					.addComponent(end)
+					.addComponent(submit)
+		);
+		
+		mainPanel.setLayout(main);
+		// mainPanel.add(equation);
+		// mainPanel.add(answerField);
+		// mainPanel.add(end);
+		// mainPanel.add(submit);
 
 		bottomPanel.add(roundsDisplay);
 		bottomPanel.add(pointsDisplay);
@@ -103,6 +128,11 @@ public class Adder implements ActionListener
 			else
 			{
 				tries++;
+
+				if (tries > 1)
+				{
+
+				}
 			}
 			
 			answerField.setText("");
