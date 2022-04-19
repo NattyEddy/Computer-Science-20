@@ -1,6 +1,6 @@
 /*
 
-Program: Adder.java          Last Date of this Revision: April 12, 2022
+Program: Adder.java          Last Date of this Revision: April 19, 2022
 
 Purpose: A game where you earn points for answering the right sum for each equation.
 
@@ -64,10 +64,10 @@ public class Adder implements ActionListener
 		main.setHorizontalGroup 
 		(
 			main.createSequentialGroup()
-				.addGroup(main.createParallelGroup(GroupLayout.Alignment.LEADING))
+				.addGroup(main.createParallelGroup(GroupLayout.Alignment.CENTER))
 					.addComponent(equation)
 					.addComponent(end)
-				.addGroup(main.createParallelGroup(GroupLayout.Alignment.LEADING))
+				.addGroup(main.createParallelGroup(GroupLayout.Alignment.CENTER))
 					.addComponent(answerField)
 					.addComponent(submit)
 		);
@@ -146,7 +146,7 @@ public class Adder implements ActionListener
 	{
 		window.add(generalPanel);
 		window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		window.setSize(500, 500);
+		window.setSize(500, 200);
 		window.setVisible(true);
 	}
 	
