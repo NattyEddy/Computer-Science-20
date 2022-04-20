@@ -1,6 +1,6 @@
 /*
 
-Program: Adder.java          Last Date of this Revision: April 19, 2022
+Program: Adder.java          Last Date of this Revision: April 20, 2022
 
 Purpose: A game where you earn points for answering the right sum for each equation.
 
@@ -64,29 +64,36 @@ public class Adder implements ActionListener
 		main.setHorizontalGroup 
 		(
 			main.createSequentialGroup()
-				.addGroup(main.createParallelGroup(GroupLayout.Alignment.CENTER))
+				.addGroup
+				(
+					main.createParallelGroup(GroupLayout.Alignment.CENTER, false)
 					.addComponent(equation)
 					.addComponent(end)
-				.addGroup(main.createParallelGroup(GroupLayout.Alignment.CENTER))
-					.addComponent(answerField)
-					.addComponent(submit)
+				)
+				.addGroup
+				(	main.createParallelGroup(GroupLayout.Alignment.CENTER, false)
+					.addComponent(answerField, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+					.addComponent(submit, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+				)
 		);
 		main.setVerticalGroup
 		(
 			main.createSequentialGroup()
-				.addGroup(main.createParallelGroup(GroupLayout.Alignment.BASELINE))
+				.addGroup
+				(
+					main.createParallelGroup(GroupLayout.Alignment.BASELINE, false)
 					.addComponent(equation)
 					.addComponent(answerField)
-				.addGroup(main.createParallelGroup(GroupLayout.Alignment.BASELINE))
+				)
+				.addGroup
+				(
+					main.createParallelGroup(GroupLayout.Alignment.BASELINE, false)
 					.addComponent(end)
 					.addComponent(submit)
+				)
 		);
 		
 		mainPanel.setLayout(main);
-		// mainPanel.add(equation);
-		// mainPanel.add(answerField);
-		// mainPanel.add(end);
-		// mainPanel.add(submit);
 
 		bottomPanel.add(roundsDisplay);
 		bottomPanel.add(pointsDisplay);
@@ -111,9 +118,9 @@ public class Adder implements ActionListener
 
 			if (calculator.userSumCheck() == true)
 			{
-				System.out.println(tries);
+				System.out.println("Tries: " + tries);
 				calculator.addPoints(tries);
-				System.out.println(tries);
+				System.out.println("Tries: " + tries);
 				pointsDisplay.setText(String.format("Points: +%d", calculator.getPointsAccumulated()));
 
 				// reset for next question
@@ -146,7 +153,8 @@ public class Adder implements ActionListener
 	{
 		window.add(generalPanel);
 		window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		window.setSize(500, 200);
+		window.setSize(200, 200);
+		window.setResizable(true);
 		window.setVisible(true);
 	}
 	
