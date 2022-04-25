@@ -106,3 +106,13 @@ public class PiggyBank {
 	}
 
 }
+
+/*
+	Added $1.25
+	Added $1.00
+	Added $0.15
+	Added $0.09
+	Added $4.00
+	Added $14.00
+	Balance: $20.49
+*/

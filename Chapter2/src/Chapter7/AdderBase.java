@@ -1,6 +1,6 @@
 /*
 
-Program: AdderBase.java          Last Date of this Revision: April 13, 2022
+Program: AdderBase.java          Last Date of this Revision: April 25, 2022
 
 Purpose: Provide the methods used for the adder game.
 
@@ -64,6 +64,9 @@ public class AdderBase
             case 1:
 				pointsAdded = 3;
                 break;
+            case 2:
+            	pointsAdded = 1;
+            	break;
             default:
                 pointsAdded = 0;
                 break;

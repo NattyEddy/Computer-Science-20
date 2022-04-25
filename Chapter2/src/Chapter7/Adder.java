@@ -1,6 +1,6 @@
 /*
 
-Program: Adder.java          Last Date of this Revision: April 20, 2022
+Program: Adder.java          Last Date of this Revision: April 25, 2022
 
 Purpose: A game where you earn points for answering the right sum for each equation.
 
@@ -24,6 +24,7 @@ public class Adder implements ActionListener
 	private static final JFrame window = new JFrame("Adder Game");
 	private static final JPanel generalPanel = new JPanel(new BorderLayout());
 	private static final JPanel mainPanel = new JPanel();
+	private static final JPanel mainPanelPanel = new JPanel(new FlowLayout());
 	private static final JPanel headerPanel = new JPanel(new FlowLayout());
 	private static final JPanel bottomPanel = new JPanel(new FlowLayout());
 	private static final GroupLayout main = new GroupLayout(mainPanel);
@@ -53,28 +54,23 @@ public class Adder implements ActionListener
 		
 		
 		// layout setup
-		generalPanel.add(headerPanel, BorderLayout.NORTH);
-		generalPanel.add(mainPanel, BorderLayout.CENTER);
-		generalPanel.add(bottomPanel, BorderLayout.SOUTH);
-		
-		headerPanel.add(header);
-		
 		main.setAutoCreateGaps(true);
 		main.setAutoCreateContainerGaps(true);
 		main.setHorizontalGroup 
 		(
-			main.createSequentialGroup()
-				.addGroup
-				(
-					main.createParallelGroup(GroupLayout.Alignment.CENTER, false)
-					.addComponent(equation)
-					.addComponent(end)
-				)
-				.addGroup
-				(	main.createParallelGroup(GroupLayout.Alignment.CENTER, false)
-					.addComponent(answerField, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-					.addComponent(submit, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-				)
+				main.createSequentialGroup()
+					.addGroup
+					(
+						main.createParallelGroup(GroupLayout.Alignment.CENTER, false)
+						.addComponent(equation)
+						.addComponent(end)
+					)
+					.addGroup
+					(		
+						main.createParallelGroup(GroupLayout.Alignment.CENTER, false)
+						.addComponent(answerField, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+						.addComponent(submit, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+					)
 		);
 		main.setVerticalGroup
 		(
@@ -93,11 +89,30 @@ public class Adder implements ActionListener
 				)
 		);
 		
+		
+		generalPanel.add(headerPanel, BorderLayout.NORTH);
+		generalPanel.add(mainPanelPanel, BorderLayout.CENTER);
+		generalPanel.add(bottomPanel, BorderLayout.SOUTH);
+		
+		headerPanel.add(header);
+		
 		mainPanel.setLayout(main);
+		mainPanelPanel.add(mainPanel);
 
 		bottomPanel.add(roundsDisplay);
 		bottomPanel.add(pointsDisplay);
 		
+	}
+	
+	private void reset()
+	{
+		// resets the app for a new question
+		tries = 0;
+		rounds++;
+		calculator.generateQuestion(0, 20);
+		
+		equation.setText(calculator.getQuestion());
+		roundsDisplay.setText("Round: " + rounds);
 	}
 	
 	public void actionPerformed(ActionEvent evt)
@@ -124,21 +139,25 @@ public class Adder implements ActionListener
 				pointsDisplay.setText(String.format("Points: +%d", calculator.getPointsAccumulated()));
 
 				// reset for next question
-				tries = 0;
-				rounds++;
-				calculator.generateQuestion(1, 20);
-				
-				equation.setText(calculator.getQuestion());
-				roundsDisplay.setText("Round: " + rounds);
+				reset();
 				
 			}
 			else
 			{
 				tries++;
 
-				if (tries > 1)
+				if (tries > 2)
 				{
-
+					// reset, and show the points gained (none)
+					reset();
+					pointsDisplay.setText(String.format("Points: +%d", calculator.getPointsAccumulated()));
+					
+					// dialog with correct answer
+					JOptionPane.showMessageDialog(window,
+							String.format("The correct answer is %d",
+							calculator.getSum()),
+							"Correct answer",
+							JOptionPane.INFORMATION_MESSAGE);
 				}
 			}
 			
@@ -153,7 +172,7 @@ public class Adder implements ActionListener
 	{
 		window.add(generalPanel);
 		window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		window.setSize(200, 200);
+		window.setSize(300, 200);
 		window.setResizable(true);
 		window.setVisible(true);
 	}
