@@ -1,6 +1,6 @@
 /*
 
-Program: AdderBase.java          Last Date of this Revision: April 25, 2022
+Program: AdderBase.java          Last Date of this Revision: April 26, 2022
 
 Purpose: Provide the methods used for the adder game.
 
@@ -118,7 +118,7 @@ public class AdderBase
                 System.out.print(calculator.getQuestion());
                 j = testInput.nextInt();
                 calculator.saveUserSum(j);
-                if (j == calculator.sum || j < 0)
+                if (j == calculator.sum)
                 {
                     calculator.addPoints(x);
                     break;
@@ -128,7 +128,7 @@ public class AdderBase
                     x++;
                 }
                 
-            } while (x < 2);
+            } while (x < 3);
             
             
             System.out.println(calculator.getSum());
