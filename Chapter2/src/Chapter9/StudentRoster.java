@@ -1,6 +1,6 @@
 /*
 
-Program: Adder.java          Last Date of this Revision: April 26, 2022
+Program: StudentRoster.java          Last Date of this Revision: April 26, 2022
 
 Purpose: List student names in an array and print them.
 
@@ -52,8 +52,23 @@ public class StudentRoster
 
 /*
  
-  
-  
-  
+How many students are in your classroom? 5
+
+Enter student 1s name: tegan
+Enter student 2s name: mile
+Enter student 3s name: nat
+Enter student 4s name: kayden
+Enter student 5s name: aydan
+
+=============================
+
+STUDENT ROSTER:
+tegan
+mile
+nat
+kayden
+aydan
+
+   
 */
  
