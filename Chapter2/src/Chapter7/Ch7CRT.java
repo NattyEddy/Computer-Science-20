@@ -14,6 +14,9 @@
  4.	it's valid; the radius can be changed after creating it with a custom
  	radius
  	
+ 	*** EDIT: previously assumes the variable is public, it cannot be accessed 
+ 		if it's a private variable
+ 	
  5.	
  	a)	Roo
  	b)	x
