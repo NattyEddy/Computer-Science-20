@@ -1,8 +1,8 @@
 /*
 
-Program: DiceRolls.java          Last Date of this Revision: May 2, 2022
+Program: DiceRolls.java          Last Date of this Revision: May 4, 2022
 
-Purpose: List student names in an array and print them.
+Purpose: Roll dice and print out the number of times a number was called.
 
 Author: Nathaniel Edillon
 School: CHHS
@@ -21,17 +21,18 @@ public class DiceRolls implements ActionListener
 {
 
 	private final int[] outcomes = new int[19];
-	private final Object[] labels = new Object[16];
+	private final JLabel[] labels = new JLabel[16];
 	private int numRolls, outcome;
 	private String print;
 	
 	private JPanel main;
 	private JPanel center;
+	private JPanel output;
+	private JPanel alignOut;
 	private JFrame window;
 	private JTextField input;
 	
 	private JLabel title;
-	private JLabel output;
 	private JLabel instruction;
 	
 	private JLabel three;
@@ -73,12 +74,11 @@ public class DiceRolls implements ActionListener
 		labels[14] = seventeen;
 		labels[15] = eighteen;
 		
-		
 		title = new JLabel("Roll the Dice!");
 		title.setHorizontalAlignment(JLabel.CENTER);
 		instruction = new JLabel("Write the number of dice rolls, then press ENTER to roll: ");
-		output = new JLabel("test");
-		output.setHorizontalAlignment(JLabel.CENTER);
+		output = new JPanel(new GridLayout(16, 1));
+		alignOut = new JPanel(new FlowLayout());
 		input = new JTextField(10);
 		input.addActionListener(this);
 		
@@ -86,11 +86,19 @@ public class DiceRolls implements ActionListener
 		main = new JPanel(new BorderLayout());
 		center = new JPanel(new FlowLayout());
 		
+		for (int i = 0; i <= 15; i++)
+		{
+			labels[i] = new JLabel("");
+			output.add(labels[i]);
+		}
+		
 		main.add(title, BorderLayout.NORTH);
 		main.add(center, BorderLayout.CENTER);
-		main.add(output, BorderLayout.SOUTH);
+		main.add(alignOut, BorderLayout.SOUTH);
 		center.add(instruction);
 		center.add(input);
+		alignOut.add(output);
+		
 	}
 	
 	private void setRolls(int rolls)
@@ -107,22 +115,33 @@ public class DiceRolls implements ActionListener
 		}
 	}
 	
-	@Override
-	public void actionPerformed(ActionEvent e)
+	private void resetOutcomes()
 	{
-//		System.out.println("Hello World!");
 		
-		setRolls(Integer.parseInt(input.getText()));
+		for (int i = 3; i < outcomes.length; i++)
+		{
+			outcomes[i] = 0;
+		}
+		
+	}
+	
+	@Override
+	public void actionPerformed(ActionEvent evt)
+	{
+		
+		
+		try{setRolls(Integer.parseInt(input.getText()));}
+		catch (Exception e) {setRolls(0);}
 		input.setText(null);
 		
+		resetOutcomes();
 		rollDice();
 		
 		for (int i = 3; i < outcomes.length; i++)
 		{
-			print += String.format("Rolled %d: %d; ", i, outcomes[i]);
+			print = String.format("Rolled %d: %d", i, outcomes[i]);
+			labels[i - 3].setText(print);
 		}
-		
-		output.setText(print);
 		
 	}
 	
@@ -131,32 +150,20 @@ public class DiceRolls implements ActionListener
 	{
 		window.add(main);
 		window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		window.setSize(500, 200);
+		window.setSize(500, 400);
 		window.setVisible(true);
 	}
 	
 	
-	// test main
+	
+	
 	public static void main(String[] args)
 	{
-//		DiceRolls console = new DiceRolls();
-//		console.setRolls(1000);
-//		console.rollDice();
-//		
-//		for (int i = 3; i < console.outcomes.length; i++)
-//		{
-//			System.out.println((i) + ": " + console.outcomes[i]);
-//		}
-//		
-//		System.out.println("Number of rolls: " + console.getRolls());
-//		System.out.println("Array length: " + console.outcomes.length);
-	
+
 		DiceRolls app = new DiceRolls();
 		app.launch();
 	
 	}
-
-	
 
 }
 
