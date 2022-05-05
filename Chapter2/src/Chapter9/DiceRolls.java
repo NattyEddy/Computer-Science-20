@@ -35,6 +35,7 @@ public class DiceRolls implements ActionListener
 	private JLabel title;
 	private JLabel instruction;
 	
+	private JLabel diceRolls;
 	private JLabel three;
 	private JLabel four;
 	private JLabel five;
@@ -77,7 +78,7 @@ public class DiceRolls implements ActionListener
 		title = new JLabel("Roll the Dice!");
 		title.setHorizontalAlignment(JLabel.CENTER);
 		instruction = new JLabel("Write the number of dice rolls, then press ENTER to roll: ");
-		output = new JPanel(new GridLayout(16, 1));
+		output = new JPanel(new GridLayout(17, 1));
 		alignOut = new JPanel(new FlowLayout());
 		input = new JTextField(10);
 		input.addActionListener(this);
@@ -86,9 +87,10 @@ public class DiceRolls implements ActionListener
 		main = new JPanel(new BorderLayout());
 		center = new JPanel(new FlowLayout());
 		
-		for (int i = 0; i <= 15; i++)
+		output.add(diceRolls = new JLabel());
+		for (int i = 0; i < 16; i++)
 		{
-			labels[i] = new JLabel("");
+			labels[i] = new JLabel();
 			output.add(labels[i]);
 		}
 		
@@ -110,7 +112,7 @@ public class DiceRolls implements ActionListener
 	{
 		for (int r = 0; r < numRolls; r++)
 		{
-			outcome = (int)((outcomes.length - 3) * Math.random() + 3);
+			outcome = (int)(6 * Math.random() + 1) + (int)(6 * Math.random() + 1) + (int)(6 * Math.random() + 1);
 			outcomes[outcome] += 1;
 		}
 	}
@@ -133,6 +135,7 @@ public class DiceRolls implements ActionListener
 		try{setRolls(Integer.parseInt(input.getText()));}
 		catch (Exception e) {setRolls(0);}
 		input.setText(null);
+		diceRolls.setText("Number of rolls: " + numRolls);
 		
 		resetOutcomes();
 		rollDice();
