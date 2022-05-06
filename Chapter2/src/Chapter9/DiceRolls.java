@@ -1,6 +1,6 @@
 /*
 
-Program: DiceRolls.java          Last Date of this Revision: May 4, 2022
+Program: DiceRolls.java          Last Date of this Revision: May 6, 2022
 
 Purpose: Roll dice and print out the number of times a number was called.
 
@@ -20,21 +20,23 @@ import javax.swing.*;
 public class DiceRolls implements ActionListener
 {
 
+	// all the variables needed
 	private final int[] outcomes = new int[19];
 	private final JLabel[] labels = new JLabel[16];
 	private int numRolls, outcome;
 	private String print;
 	
+	// most components of GUI
 	private JPanel main;
 	private JPanel center;
 	private JPanel output;
 	private JPanel alignOut;
 	private JFrame window;
 	private JTextField input;
-	
 	private JLabel title;
 	private JLabel instruction;
 	
+	// JLabel for each result in an array
 	private JLabel diceRolls;
 	private JLabel three;
 	private JLabel four;
@@ -55,9 +57,11 @@ public class DiceRolls implements ActionListener
 	
 	public DiceRolls()
 	{
+		// initialize variables
 		numRolls = 0; outcome = 0;
 		print = "";
 		
+		// array setup
 		labels[0] = three;
 		labels[1] = four;
 		labels[2] = five;
@@ -75,6 +79,8 @@ public class DiceRolls implements ActionListener
 		labels[14] = seventeen;
 		labels[15] = eighteen;
 		
+		
+		// initialize components
 		title = new JLabel("Roll the Dice!");
 		title.setHorizontalAlignment(JLabel.CENTER);
 		instruction = new JLabel("Write the number of dice rolls, then press ENTER to roll: ");
@@ -94,6 +100,7 @@ public class DiceRolls implements ActionListener
 			output.add(labels[i]);
 		}
 		
+		// add components to panels
 		main.add(title, BorderLayout.NORTH);
 		main.add(center, BorderLayout.CENTER);
 		main.add(alignOut, BorderLayout.SOUTH);
@@ -108,6 +115,7 @@ public class DiceRolls implements ActionListener
 		numRolls = rolls;
 	}
 	
+	// randomized dice roll
 	private void rollDice()
 	{
 		for (int r = 0; r < numRolls; r++)
@@ -117,6 +125,7 @@ public class DiceRolls implements ActionListener
 		}
 	}
 	
+	// reset outcomes array to 0
 	private void resetOutcomes()
 	{
 		
@@ -131,7 +140,7 @@ public class DiceRolls implements ActionListener
 	public void actionPerformed(ActionEvent evt)
 	{
 		
-		
+		// take text field input and set numRolls
 		try{setRolls(Integer.parseInt(input.getText()));}
 		catch (Exception e) {setRolls(0);}
 		input.setText(null);
@@ -140,6 +149,7 @@ public class DiceRolls implements ActionListener
 		resetOutcomes();
 		rollDice();
 		
+		// print outcome for each possible number to be rolled (3 - 18)
 		for (int i = 3; i < outcomes.length; i++)
 		{
 			print = String.format("Rolled %d: %d", i, outcomes[i]);
@@ -169,27 +179,3 @@ public class DiceRolls implements ActionListener
 	}
 
 }
-
-/*
-
-3: 52
-4: 61
-5: 62
-6: 77
-7: 56
-8: 68
-9: 71
-10: 66
-11: 58
-12: 65
-13: 49
-14: 58
-15: 69
-16: 67
-17: 60
-18: 61
-Number of rolls: 1000
-Array length: 19
-
- 
-*/

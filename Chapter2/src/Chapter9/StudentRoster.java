@@ -26,7 +26,7 @@ public class StudentRoster
 		int students;
 		
 		System.out.print("How many students are in your classroom? ");
-		students = input.nextInt();
+		students = Integer.parseInt(input.nextLine());
 		System.out.println();
 		
 		studentNames = new String[students];
@@ -34,7 +34,7 @@ public class StudentRoster
 		for (int i = 0; i < studentNames.length; i++)
 		{
 			System.out.printf("Enter student %ds name: ", i + 1);
-			studentNames[i] = input.next();
+			studentNames[i] = input.nextLine();
 		}
 		
 		System.out.println("\n=============================\n");
