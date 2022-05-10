@@ -1,6 +1,6 @@
 /*
 
-Program: DiceRolls.java          Last Date of this Revision: May 6, 2022
+Program: DiceRolls.java          Last Date of this Revision: May 10, 2022
 
 Purpose: Roll dice and print out the number of times a number was called.
 
@@ -35,50 +35,13 @@ public class DiceRolls implements ActionListener
 	private JTextField input;
 	private JLabel title;
 	private JLabel instruction;
-	
-	// JLabel for each result in an array
 	private JLabel diceRolls;
-	private JLabel three;
-	private JLabel four;
-	private JLabel five;
-	private JLabel six; 
-	private JLabel seven;
-	private JLabel eight;
-	private JLabel nine;
-	private JLabel ten;
-	private JLabel eleven;
-	private JLabel twelve;
-	private JLabel thirteen;
-	private JLabel fourteen;
-	private JLabel fifteen;
-	private JLabel sixteen;
-	private JLabel seventeen;
-	private JLabel eighteen;
 	
 	public DiceRolls()
 	{
 		// initialize variables
 		numRolls = 0; outcome = 0;
 		print = "";
-		
-		// array setup
-		labels[0] = three;
-		labels[1] = four;
-		labels[2] = five;
-		labels[3] = six;
-		labels[4] = seven;
-		labels[5] = eight;
-		labels[6] = nine;
-		labels[7] = ten;
-		labels[8] = eleven;
-		labels[9] = twelve;
-		labels[10] = thirteen;
-		labels[11] = fourteen;
-		labels[12] = fifteen;
-		labels[13] = sixteen;
-		labels[14] = seventeen;
-		labels[15] = eighteen;
-		
 		
 		// initialize components
 		title = new JLabel("Roll the Dice!");
@@ -94,7 +57,7 @@ public class DiceRolls implements ActionListener
 		center = new JPanel(new FlowLayout());
 		
 		output.add(diceRolls = new JLabel());
-		for (int i = 0; i < 16; i++)
+		for (int i = 0; i < labels.length; i++)
 		{
 			labels[i] = new JLabel();
 			output.add(labels[i]);
