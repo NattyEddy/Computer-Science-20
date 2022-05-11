@@ -1,6 +1,6 @@
 /*
 
-Program: PrimeNumberModified.java          Last Date of this Revision: March 9, 2022
+Program: PrimeNumberGUIBase.java          Last Date of this Revision: March 9, 2022
 
 Purpose: Prompt for two numbers, find prime numbers in that range, and print them.
 
