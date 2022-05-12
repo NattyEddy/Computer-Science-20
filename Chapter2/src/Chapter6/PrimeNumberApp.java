@@ -15,14 +15,15 @@ public class PrimeNumberApp
 	private JPanel choosePanel;
 	private JPanel singlePrimePanel;
 	private JPanel rangePrimeFunc;
+	private GroupLayout singlePrimeLayout;
 	
 	private JLabel title;
 	private JLabel description;
 	private JTextField input;
+	private JTextArea output;
 	private JList options;
 	
 	private Dimension minSize, maxSize, prefSize;
-	private Box.Filler left, right;
 	
 	private Font header;
 	private Font header2;
@@ -39,11 +40,14 @@ public class PrimeNumberApp
 		panel = new JPanel();
 		panel.setLayout(new BorderLayout());
 		
+		singlePrimePanel = new JPanel();
+		singlePrimeLayout = new GroupLayout(singlePrimePanel);
+		singlePrimeLayout.setAutoCreateGaps(true);
+		singlePrimeLayout.setAutoCreateContainerGaps(true);
+		
 		minSize = new Dimension(25, 100);
 		prefSize = new Dimension(100, 100);
 		maxSize = new Dimension(Short.MAX_VALUE, 100);
-		left = new Box.Filler(minSize, prefSize, maxSize);
-		right = new Box.Filler(minSize, prefSize, maxSize);
 		
 		header = new Font("Comic Sans MS", Font.BOLD, 72);
 		header2 = new Font("Comic Sans MS", Font.BOLD, 36);
@@ -65,26 +69,35 @@ public class PrimeNumberApp
 		options.setSelectedIndex(0);
 		options.setFont(regular);
 		
-		choosePanel.add(left);
+		choosePanel.add(new Box.Filler(minSize, prefSize, maxSize));
 		choosePanel.add(options);
-		choosePanel.add(right);
+		choosePanel.add(new Box.Filler(minSize, prefSize, maxSize));
 
 		
 		// the actual prime finder/checker
-		singlePrimePanel = new JPanel();
-		singlePrimePanel.setLayout(new BoxLayout(singlePrimePanel, BoxLayout.Y_AXIS));
+		singlePrimePanel.setLayout(singlePrimeLayout);
 		singlePrimePanel.setBackground(Color.lightGray);
 		
 		description = new JLabel("Enter any number to check for prime:");
-		description.setFont(header2);
+		description.setFont(regular);
 		
 		input = new JTextField();
-
-		singlePrimePanel.add(left);
-		singlePrimePanel.add(description);
-		singlePrimePanel.add(input);
-		singlePrimePanel.add(right);
 		
+		singlePrimeLayout.setHorizontalGroup
+		(
+			singlePrimeLayout.createParallelGroup(GroupLayout.Alignment.CENTER, false)
+			.addComponent(description, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+			.addComponent(input, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+		);
+		
+		singlePrimeLayout.setVerticalGroup
+		(
+			singlePrimeLayout.createSequentialGroup()
+			.addComponent(description, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+			.addPreferredGap(LayoutStyle.ComponentPlacement.RELATED,
+                    GroupLayout.DEFAULT_SIZE, 20)
+			.addComponent(input, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+		);
 		
 		
 		// add all elements into program layout
