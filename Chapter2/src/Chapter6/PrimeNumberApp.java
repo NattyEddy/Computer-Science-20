@@ -1,8 +1,8 @@
 package Chapter6;
 
-import java.awt.BorderLayout;
-import java.awt.Color;
-import java.awt.Dimension;
+import java.awt.*;
+//import java.awt.Color;
+//import java.awt.Dimension;
 import java.awt.Font;
 
 import javax.swing.*;
@@ -14,6 +14,7 @@ public class PrimeNumberApp
 	private JPanel panel;
 	private JPanel choosePanel;
 	private JPanel singlePrimePanel;
+	private JPanel singlePrimePanelPanel;
 	private JPanel rangePrimeFunc;
 	private GroupLayout singlePrimeLayout;
 	
@@ -41,6 +42,7 @@ public class PrimeNumberApp
 		panel.setLayout(new BorderLayout());
 		
 		singlePrimePanel = new JPanel();
+		singlePrimePanelPanel = new JPanel(new FlowLayout());
 		singlePrimeLayout = new GroupLayout(singlePrimePanel);
 		singlePrimeLayout.setAutoCreateGaps(true);
 		singlePrimeLayout.setAutoCreateContainerGaps(true);
@@ -77,6 +79,7 @@ public class PrimeNumberApp
 		// the actual prime finder/checker
 		singlePrimePanel.setLayout(singlePrimeLayout);
 		singlePrimePanel.setBackground(Color.lightGray);
+		singlePrimePanelPanel.setBackground(Color.lightGray);
 		
 		description = new JLabel("Enter any number to check for prime:");
 		description.setFont(regular);
@@ -99,12 +102,14 @@ public class PrimeNumberApp
 			.addComponent(input, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
 		);
 		
+		singlePrimePanelPanel.add(singlePrimePanel);
+		
 		
 		// add all elements into program layout
 		window.add(panel);
 		panel.add(title, BorderLayout.NORTH);
 		panel.add(choosePanel, BorderLayout.EAST);
-		panel.add(singlePrimePanel, BorderLayout.CENTER);
+		panel.add(singlePrimePanelPanel, BorderLayout.CENTER);
 		
 	}
 	
