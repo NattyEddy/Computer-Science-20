@@ -96,7 +96,7 @@ public class TugOfWar
         			System.out.println("Green Wins!");
         			for (int i = 0; i <= 10; i++)
         			{
-        				greenLED.setState(!redLED.getState());
+        				greenLED.setState(!greenLED.getState());
         				Thread.sleep(100);
         			}
         			System.exit(0);

@@ -50,7 +50,7 @@ public class ButtonsAndLEDs
         greenButton.open(1000);
 
         //Use your Phidgets | Here is where you can have some fun and use your Phidgets! You can turn your LED on/off by setting the state to true/false. The sleep command keeps your LED on by letting 1000 milliseconds pass before turning the LED off.
-        int ledLoop = 0;
+//        int ledLoop = 0;
         int redButtonPressed = 0;
         int greenButtonPressed = 0;
         boolean redButtonState = true;
