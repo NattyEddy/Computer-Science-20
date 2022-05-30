@@ -1,6 +1,6 @@
 /*
 
-Program: TugOfWar.java          Last Date of this Revision: May 19, 2022
+Program: TugOfWar.java          Last Date of this Revision: May 30, 2022
 
 Purpose: Use the Phidgets box to simulate a game of TugOfWar.
 
@@ -102,7 +102,7 @@ public class TugOfWar
         			System.exit(0);
         	}
         	
-        	Thread.sleep(5);
+        	Thread.sleep(1);
             
         }
     }

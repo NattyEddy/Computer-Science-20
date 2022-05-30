@@ -1,6 +1,6 @@
 /*
 
-Program: Thermometer.java          Last Date of this Revision: May 27, 2022
+Program: Thermometer.java          Last Date of this Revision: May 30, 2022
 
 Purpose: Simulate a thermometer with the Phidgets box.
 
@@ -32,9 +32,9 @@ public class Thermometer
         // Create | Variables
         
         double celsius;
-        double fahrenheit;
+//      double fahrenheit;
         int setTemp = 22;
-        int change = 0;
+        int change = 1;
         boolean decreaseButtonState = false;
         boolean increaseButtonState = false;
         
@@ -63,7 +63,7 @@ public class Thermometer
         {
             
         	celsius = temperatureSensor.getTemperature();
-        	fahrenheit = celsius * 1.8 + 32;
+//        	fahrenheit = celsius * 1.8 + 32;
         	
         	// detect button presses and change set temperature
         	if (decreaseButtonState != decreaseButton.getState())
