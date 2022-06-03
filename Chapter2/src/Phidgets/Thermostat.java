@@ -17,7 +17,7 @@ package Phidgets;
 // Add Phidgets Library
 import com.phidget22.*;
 
-public class Thermometer
+public class Thermostat
 {
     public static void main(String[] args) throws Exception
     {
@@ -35,6 +35,7 @@ public class Thermometer
 //      double fahrenheit;
         int setTemp = 22;
         int change = 1;
+        int time = 0;
         boolean decreaseButtonState = false;
         boolean increaseButtonState = false;
         
@@ -98,8 +99,15 @@ public class Thermometer
         		redLED.setState(true);
         		greenLED.setState(false);
         	}
-  
-        	Thread.sleep(10);
+        	
+        	time += 5;
+            
+            if (time == 10000) {
+            	System.out.printf("Current temp: %.2f°C\n", celsius);
+            	time = 0;
+            }
+        	
+            Thread.sleep(1);
             
         }
     }
