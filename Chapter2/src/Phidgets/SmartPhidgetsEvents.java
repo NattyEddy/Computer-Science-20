@@ -37,7 +37,7 @@ public class SmartPhidgetsEvents {
 
       //Keep program running
       while (true) {
-          Thread.sleep(150);
+          Thread.sleep(1000);
       }
   }
 }
