@@ -44,6 +44,7 @@ public class LEDBrightness {
     	  Thread.sleep(1000);
     	  redLED.setDutyCycle(0.0);
     	  Thread.sleep(1000);
+    	  break;
       }
       
   }

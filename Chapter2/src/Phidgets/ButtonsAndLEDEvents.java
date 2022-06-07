@@ -1,7 +1,6 @@
-
 /*
 
-Program: ButtonsAndLEDEvents.java          Last Date of this Revision: June 2, 2022
+Program: ButtonsAndLEDEvents.java          Last Date of this Revision: June 7, 2022
 
 Purpose: Use events to utilize buttons and LED action.
 
@@ -22,6 +21,7 @@ public class ButtonsAndLEDEvents {
   static boolean turnRedLEDState = false;
   static boolean turnGreenLEDState = false;
   static int clicks = 0;
+  static int totalClicks = 0;
   
   public static void win(DigitalOutput colorLED) throws Exception {
 	  for (int i = 0; i < 10; i++) {
@@ -55,7 +55,11 @@ public class ButtonsAndLEDEvents {
           public void onStateChange(DigitalInputStateChangeEvent e) {
               //Record button state to turn on/off the red LED
               turnRedLEDState = e.getState();
-              clicks += e.getState() ? 1:0;
+              if (e.getState() == true) {
+            	  clicks++;
+            	  totalClicks++;
+            	  System.out.printf("Points: %d\t(Total: %d)\n", clicks, totalClicks);
+              }
           }
       });
 
@@ -64,7 +68,11 @@ public class ButtonsAndLEDEvents {
           public void onStateChange(DigitalInputStateChangeEvent e) {
               //Record button state to turn on/off the green LED
               turnGreenLEDState = e.getState();
-              clicks -= e.getState() ? 1:0;
+              if (e.getState() == true) {
+            	  clicks--;
+            	  totalClicks++;
+            	  System.out.printf("Points: %d\t(Total: %d)\n", clicks, totalClicks);
+              }
           }
       });
 
@@ -76,14 +84,18 @@ public class ButtonsAndLEDEvents {
 
       //Use your Phidgets | In the button events you recorded the Button State. Here we will use that data to turn on/off the LEDs
       while(true) {
-          redLED.setState(turnRedLEDState);
-          greenLED.setState(turnGreenLEDState);
+          greenLED.setState(turnRedLEDState);
+          redLED.setState(turnGreenLEDState);
           if (clicks == 10) {
+        	  redButton.close();
+        	  greenButton.close();
         	  System.out.println("Red wins!");
         	  win(redLED);
         	  break;
           }
           else if (clicks == -10) {
+        	  redButton.close();
+        	  greenButton.close();
         	  System.out.println("Green wins!");
         	  win(greenLED);
         	  break;

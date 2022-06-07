@@ -4,6 +4,8 @@ Program: ButtonEvents.java          Last Date of this Revision: June 2, 2022
 
 Purpose: Similar to ReadButton.java but with events!
 
+*** NOTE: the green button ends the program
+
 Author: Nathaniel Edillon
 School: CHHS
 Course: Computer Programming 20
