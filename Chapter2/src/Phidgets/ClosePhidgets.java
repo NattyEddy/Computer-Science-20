@@ -35,10 +35,10 @@ public class ClosePhidgets {
       Thread.sleep(1000);
       
       //Open
-     temperatureSensor.open(1000);
+      temperatureSensor.open(1000);
 
       //Use your Phidgets
-      System.out.println("Temperature: " + temperatureSensor.getTemperature() + " °C" );
+      System.out.println("Temperature: " + temperatureSensor.getTemperature() + "°C" );
       
       //Close your Phidgets
       temperatureSensor.close();

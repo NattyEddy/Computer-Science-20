@@ -1,3 +1,16 @@
+/*
+
+Program: SmartPhidgetsEvents.java          Last Date of this Revision: June 9, 2022
+
+Purpose: Read the room's temperature with the Phidgets sensor using events.
+
+Author: Nathaniel Edillon
+School: CHHS
+Course: Computer Programming 20
+ 
+
+*/
+
 package Phidgets;
 
 

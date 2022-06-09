@@ -1,8 +1,8 @@
 /*
 
-Program: Thermometer.java          Last Date of this Revision: May 30, 2022
+Program: Thermostat.java          Last Date of this Revision: May 30, 2022
 
-Purpose: Simulate a thermometer with the Phidgets box.
+Purpose: Simulate a thermostat with the Phidgets box.
 
 Author: Nathaniel Edillon
 School: CHHS
